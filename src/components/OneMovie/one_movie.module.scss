@@ -1,0 +1,65 @@
+.card {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.poster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 500px;
+}
+.about__movie {
+  width: 300px;
+  height: 500px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.173);
+}
+.title {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.backdrop__path {
+  width: 700px;
+  height: 500px;
+  background-size: cover;
+  background-position: top;
+}
+.overlay {
+  background-color: rgba(255, 255, 255, 0.173);
+  width: 60%;
+  height: 100%;
+  padding: 30px;
+  text-align: left;
+  font-size: 25px;
+  overflow: auto;
+}
+.genres {
+  padding: 10px;
+  font-size: 18px;
+  width: 40%;
+  border: 1px solid black;
+}
+.genres h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+.genres p {
+  margin: 5px 0;
+}
+.companies {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
