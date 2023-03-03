@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import { nanoid } from 'nanoid';
 
 import notfound from '../../img/notfound.jpg';
 import s from './found_movies.module.scss';
@@ -17,10 +16,7 @@ const FoundMovies = ({ moviesOBJ }) => {
           }
           return (
             <li key={oneKino.id}>
-              <NavLink
-                to={`/movies/${oneKino.id}`}
-                className={s.kino__card}
-              >
+              <NavLink to={`/movies/${oneKino.id}`} className={s.kino__card}>
                 <img
                   src={imgNotFound}
                   width="110"
