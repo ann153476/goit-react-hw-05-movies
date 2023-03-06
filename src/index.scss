@@ -123,12 +123,12 @@ img {
   object-fit: contain;
 }
 ///////////
-.go__back {
+.btn {
   margin: 5px;
   margin-left: 10px;
   background-color: transparent;
 }
-.go__back a {
+.btn a {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -148,7 +148,7 @@ img {
     fill: white;
   }
 }
-.go__back a svg {
+.btn a svg {
   fill: black;
 }
 

@@ -1,9 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import notfound from '../../img/notfound.jpg';
 import s from './found_movies.module.scss';
 
 const FoundMovies = ({ moviesOBJ }) => {
+  const location = useLocation();
+
   return (
     <>
       <ul className={s.kino__block}>
@@ -16,7 +18,11 @@ const FoundMovies = ({ moviesOBJ }) => {
           }
           return (
             <li key={oneKino.id}>
-              <NavLink to={`/movies/${oneKino.id}`} className={s.kino__card}>
+              <NavLink
+                state={{ from: location }}
+                to={`/movies/${oneKino.id}`}
+                className={s.kino__card}
+              >
                 <img
                   src={imgNotFound}
                   width="110"

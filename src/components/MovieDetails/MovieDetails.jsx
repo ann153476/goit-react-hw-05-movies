@@ -1,15 +1,24 @@
 import { fetchMovieById } from 'api/api';
 import { useState, useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
-import svg from '../../img/symbol-defs.svg';
+import {
+  NavLink,
+  Outlet,
+  Link,
+  useParams,
+  useLocation,
+} from 'react-router-dom';
 
+import svg from '../../img/symbol-defs.svg';
 import notfound from '../../img/notfound.jpg';
 
 import s from './one_movie.module.scss';
 
-const OneMovie = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
+
+  const location = useLocation();
+
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -29,12 +38,12 @@ const OneMovie = () => {
   } else {
     imgNotFound = notfound;
   }
-  console.log(movie, '<<<<<');
+
   return (
     <>
       <div className="go__back__box">
-        <div className="go__back">
-          <NavLink to="/movies">
+        <div className="btn">
+          <NavLink to={location.state.from ?? '/'}>
             <svg width="30">
               <use href={`${svg}#reshot`}></use>
             </svg>
@@ -53,35 +62,28 @@ const OneMovie = () => {
           <p>Popularity : {movie.popularity}</p>
           <div className={s.genres}>
             <h3>Genres : </h3>
-            {movie.genres ? (
-              movie.genres.map(({ id, name }) => <p key={id}>{name}</p>)
-            ) : (
-              <></>
-            )}
+            {movie?.genres &&
+              movie.genres.map(({ id, name }) => <p key={id}>{name}</p>)}
           </div>
           <p>Release date : {movie.release_date}</p>
           <div className={s.companies}>
-            {movie.production_companies ? (
-              movie.production_companies.map(({ id, logo_path }) => (
-                <img
-                  key={id}
-                  src={`http://image.tmdb.org/t/p/w500${logo_path}`}
-                  width="60"
-                  alt=" "
-                />
-              ))
-            ) : (
-              <></>
-            )}
-            {/* {movie.production_companies[0].logo_path && (
-              <img
-                src={`http://image.tmdb.org/t/p/w500${movie.production_companies[0].logo_path}`}
-                width="80"
-                alt=" "
-              />
-            )} */}
+            {movie.production_companies &&
+              movie.production_companies.map(({ id, logo_path }) =>
+                logo_path ? (
+                  <img
+                    key={id}
+                    src={`http://image.tmdb.org/t/p/w500${logo_path}`}
+                    width="60"
+                    alt="logo"
+                  />
+                ) : (
+                  <></>
+                )
+              )}
           </div>
-          <a href={movie.homepage}>{movie.homepage}</a>
+          <a href={movie.homepage}>
+            <span>{movie.homepage}</span>
+          </a>
         </div>
         <div
           style={{
@@ -94,7 +96,15 @@ const OneMovie = () => {
           </div>
         </div>
       </div>
+      <div className="btn">
+        <Link to="cast">Cast</Link>
+      </div>
+      <div className="btn">
+        <Link to="reviews">Reviews</Link>
+      </div>
+
+      <Outlet />
     </>
   );
 };
-export default OneMovie;
+export default MovieDetails;

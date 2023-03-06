@@ -22,6 +22,17 @@
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.173);
 }
+.about__movie a {
+  width: 280px;
+  overflow-wrap: break-word;
+  padding: 10px;
+  color: black;
+}
+.about__movie a:hover {
+  background-color: rgba(0, 0, 0, 0.141);
+  color: white;
+}
+
 .title {
   font-size: 20px;
   text-align: center;

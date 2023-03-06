@@ -34,12 +34,11 @@ const MoviesPage = () => {
     e.preventDefault();
     setSearchQuery(search);
     setSearch('');
-    console.log(search);
   };
   return (
     <>
       <div className="go__back__box input__flex">
-        <div className="go__back">
+        <div className="btn">
           <NavLink to="/">
             <svg width="30">
               <use href={`${svg}#reshot`}></use>

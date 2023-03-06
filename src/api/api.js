@@ -20,3 +20,17 @@ export const fetchMovieById = async movieId => {
   );
   return response;
 };
+
+export const fetchCastById = async movieId => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=7d23cc62b7c3bc600e9baf82b9466a16&language=en-US`
+  );
+  return response;
+};
+
+export const fetchReviewsById = async movieId => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=7d23cc62b7c3bc600e9baf82b9466a16&language=en-US&page=1`
+  );
+  return response;
+};
