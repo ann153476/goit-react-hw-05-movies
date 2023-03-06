@@ -8,7 +8,7 @@ import s from './cast.module.scss';
 const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
-  const [error, setError] = useState(false);
+
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -16,7 +16,6 @@ const Cast = () => {
         setCast(data.cast);
       } catch (error) {
         console.log(error, 'error');
-        setError(true);
       }
     };
     if (movieId) {
@@ -34,7 +33,7 @@ const Cast = () => {
         }
         return (
           <li className={s.card} key={id}>
-            <img src={imgNotFound} width="70" />
+            <img src={imgNotFound} width="70" alt="none" />
             <p>{name}</p>
             <p>character:</p>
             <p>{character}</p>
