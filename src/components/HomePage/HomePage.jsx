@@ -20,7 +20,7 @@ const HomePage = () => {
 
   return (
     <>
-      <FoundMovies moviesOBJ={allKino}  />
+      <FoundMovies movies={allKino} />
     </>
   );
 };

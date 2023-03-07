@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieBySearch } from '../../api/api';
-
+import { useSearchParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 import FoundMovies from 'components/FoundMovies/FoundMovies';
@@ -12,27 +12,29 @@ import svg from '../../img/symbol-defs.svg';
 const MoviesPage = () => {
   const [allKino, setallKino] = useState([]);
   const [search, setSearch] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchQwery = searchParams.get('search');
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await fetchMovieBySearch(searchQuery);
+        const { data } = await fetchMovieBySearch(searchQwery);
         setallKino(data.results);
       } catch (error) {
         console.log(error, 'error');
       }
     };
-    if (searchQuery) {
+    if (searchQwery) {
       fetchPosts();
     }
-  }, [searchQuery]);
+  }, [searchQwery]);
   const handleChange = e => {
     setSearch(e.target.value);
   };
   const handleSubmit = e => {
     e.preventDefault();
-    setSearchQuery(search);
+    setSearchParams({ search: search });
     setSearch('');
   };
   return (
@@ -67,7 +69,7 @@ const MoviesPage = () => {
           </form>
         </div>
       </div>
-      <FoundMovies moviesOBJ={allKino} />
+      <FoundMovies movies={allKino} />
     </>
   );
 };

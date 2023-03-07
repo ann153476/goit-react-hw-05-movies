@@ -1,21 +1,20 @@
 import { NavLink, useLocation } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import notfound from '../../img/notfound.jpg';
 import s from './found_movies.module.scss';
 
-const FoundMovies = ({ moviesOBJ }) => {
+const FoundMovies = ({ movies }) => {
   const location = useLocation();
 
   return (
     <>
       <ul className={s.kino__block}>
-        {moviesOBJ.map(oneKino => {
+        {movies.map(oneKino => {
           let imgNotFound = '';
-          if (oneKino.poster_path) {
-            imgNotFound = `http://image.tmdb.org/t/p/w500${oneKino.poster_path}`;
-          } else {
-            imgNotFound = notfound;
-          }
+          oneKino.poster_path
+            ? (imgNotFound = `http://image.tmdb.org/t/p/w500${oneKino.poster_path}`)
+            : (imgNotFound = notfound);
+
           return (
             <li key={oneKino.id}>
               <NavLink
@@ -40,6 +39,10 @@ const FoundMovies = ({ moviesOBJ }) => {
       </ul>
     </>
   );
+};
+
+FoundMovies.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default FoundMovies;

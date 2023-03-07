@@ -33,17 +33,15 @@ const MovieDetails = () => {
     }
   }, [movieId]);
   let imgNotFound = '';
-  if (movie.poster_path) {
-    imgNotFound = `http://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  } else {
-    imgNotFound = notfound;
-  }
+  movie.poster_path
+    ? (imgNotFound = `http://image.tmdb.org/t/p/w500${movie.poster_path}`)
+    : (imgNotFound = notfound);
 
   return (
     <>
       <div className="go__back__box">
         <div className="btn">
-          <NavLink to={location.state.from ?? '/'}>
+          <NavLink to={location.state?.from}>
             <svg width="30">
               <use href={`${svg}#reshot`}></use>
             </svg>

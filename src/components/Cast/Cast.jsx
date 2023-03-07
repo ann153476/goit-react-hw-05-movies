@@ -26,11 +26,9 @@ const Cast = () => {
     <ul className={s.cast__block}>
       {cast.map(({ id, name, character, profile_path }) => {
         let imgNotFound = '';
-        if (profile_path) {
-          imgNotFound = `http://image.tmdb.org/t/p/w500${profile_path}`;
-        } else {
-          imgNotFound = notfound;
-        }
+        profile_path
+          ? (imgNotFound = `http://image.tmdb.org/t/p/w500${profile_path}`)
+          : (imgNotFound = notfound);
         return (
           <li className={s.card} key={id}>
             <img src={imgNotFound} width="70" alt="none" />
