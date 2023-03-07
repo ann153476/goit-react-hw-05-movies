@@ -19,6 +19,8 @@ const MovieDetails = () => {
 
   const location = useLocation();
 
+  console.log(location, 'locatiob');
+
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -41,7 +43,7 @@ const MovieDetails = () => {
     <>
       <div className="go__back__box">
         <div className="btn">
-          <NavLink to={location.state?.from}>
+          <NavLink to={location.state?.from ?? ''}>
             <svg width="30">
               <use href={`${svg}#reshot`}></use>
             </svg>
@@ -95,10 +97,14 @@ const MovieDetails = () => {
         </div>
       </div>
       <div className="btn">
-        <Link to="cast">Cast</Link>
+        <Link to="cast" state={{ from: location.state?.from ?? '/' }}>
+          Cast
+        </Link>
       </div>
       <div className="btn">
-        <Link to="reviews">Reviews</Link>
+        <Link to="reviews" state={{ from: location.state?.from ?? '/' }}>
+          Reviews
+        </Link>
       </div>
 
       <Outlet />

@@ -40,14 +40,7 @@ const MoviesPage = () => {
   return (
     <>
       <div className="go__back__box input__flex">
-        <div className="btn">
-          <NavLink to="/">
-            <svg width="30">
-              <use href={`${svg}#reshot`}></use>
-            </svg>
-            Go back
-          </NavLink>
-        </div>
+        <div className="btn"></div>
         <div className={s.input__box}>
           <form onSubmit={handleSubmit}>
             <input

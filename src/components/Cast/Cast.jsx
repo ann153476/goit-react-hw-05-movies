@@ -24,13 +24,13 @@ const Cast = () => {
   }, [movieId]);
   return (
     <ul className={s.cast__block}>
-      {cast.map(({ id, name, character, profile_path }) => {
+      {cast.map(({ cast_id, name, character, profile_path }) => {
         let imgNotFound = '';
         profile_path
           ? (imgNotFound = `http://image.tmdb.org/t/p/w500${profile_path}`)
           : (imgNotFound = notfound);
         return (
-          <li className={s.card} key={id}>
+          <li className={s.card} key={cast_id}>
             <img src={imgNotFound} width="70" alt="none" />
             <p>{name}</p>
             <p>character:</p>
